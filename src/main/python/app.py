@@ -139,11 +139,14 @@ class CommandLineApp(object):
 		writer = codecs.getwriter("utf8")
 		sys.stdout = writer(sys.stdout)
 
-		# Create and initialize an ArgumentParser
+		# Create and initialize an ArgumentParser.
 		parser = argparse.ArgumentParser(description=description)
 		parser.add_argument("--version", action="version", version="%(prog)s v" + str(self._version))
 		for i in command_line_args:
 			params = dict(required=i[1], type=i[2], nargs=i[3], default=i[4], action=i[5], help=i[6])
+			# Positional arguments do not use required.
+			if i[:2] != "--":
+				del params["required"]
 			parser.add_argument(i[0], **params)
 
 		# Inject argument values into all types within the module with matching

@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-// launchpad/src/main/javascript/module.js
+//** launchpad/src/main/javascript/module.js
 
 /**
  * This template implements a singleton type that can install named operations

@@ -25,7 +25,7 @@
 	SOFTWARE.
 """
 
-# launchpad/src/main/python/app.py
+#** launchpad/src/main/python/app.py
 
 #pylint: disable=bare-except, bad-continuation, mixed-indentation
 
@@ -53,10 +53,10 @@ class CommandLineApp(object):
 
 	# Command-line args format: (name, required, type, nargs, default, action, help)
 	__command_line_args = [
-		("--log-level", False, str, None, log_level, None, u"set log output level"),
-		("--log-date-format", False, str, None, log_date_format, None, u"set log date format"),
-		("--log-kv-format", False, str, None, log_kv_format, None, u"set log key/value format"),
-		("--log-format", False, str, None, log_format, None, u"set log line format")
+		("--log-level", False, str, None, log_level, None, u"set the log output level"),
+		("--log-date-format", False, str, None, log_date_format, None, u"set the log date format"),
+		("--log-kv-format", False, str, None, log_kv_format, None, u"set the log key/value format"),
+		("--log-format", False, str, None, log_format, None, u"set the log line format")
 	]
 
 	@classmethod
@@ -163,7 +163,7 @@ class CommandLineApp(object):
 		for key, value in vars(parser.parse_args()).iteritems():
 			for obj in configurable_types:
 				if hasattr(obj, key):
-					self.log_debug("Parameter", value=value, key=key, dest=obj.__name__)
+					self.log_info("Parameter", obj=obj.__name__, name=key, value=value)
 
 	def initialize(self):
 		"""

@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+#** launchpad/src/main/python/app.py
+
 """
 	The MIT License (MIT)
 
@@ -24,8 +26,6 @@
 	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 	SOFTWARE.
 """
-
-#** launchpad/src/main/python/app.py
 
 #pylint: disable=bad-continuation, bare-except, mixed-indentation
 

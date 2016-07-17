@@ -48,7 +48,7 @@ class CommandLineApp(object):
 	log_level = "WARNING"
 	log_date_format = "%Y-%m-%d %H:%M:%S"
 	log_kv_format = "{0}={1}"
-	log_format = "{date} [{app}] [{level}] [{api}] [{message}] {values}"
+	log_format = "{date} [{level}] [{app}] [{api}] [{message}] {values}"
 
 	# Command-line args format: (name, required, type, nargs, default, action, help)
 	__command_line_args = [

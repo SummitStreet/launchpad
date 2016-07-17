@@ -27,9 +27,8 @@
 
 #** launchpad/src/main/python/app.py
 
-#pylint: disable=bare-except, bad-continuation, mixed-indentation
+#pylint: disable=bad-continuation, bare-except, mixed-indentation
 
-#{IMPORT}
 from abc import ABCMeta, abstractmethod
 import argparse
 import codecs

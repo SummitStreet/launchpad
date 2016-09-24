@@ -128,7 +128,7 @@ class CommandLineApp(object):
 		"""
 		cli = self.__command_line_args[:]
 		cli.extend(command_line_args)
-		self.__config(description, cli, args)
+		self.__config(description, cli, args if args else [self.__class__])
 
 	def __config(self, description, command_line_args, configurable_types):
 		"""
@@ -137,6 +137,7 @@ class CommandLineApp(object):
 		"""
 		sys.stdin = codecs.getreader("utf-8")(sys.stdin)
 		sys.stdout = codecs.getwriter("utf-8")(sys.stdout)
+		sys.stderr = codecs.getwriter("utf-8")(sys.stderr)
 
 		# Create and initialize an ArgumentParser.
 		parser = argparse.ArgumentParser(description=description)
@@ -194,7 +195,7 @@ class CommandLineApp(object):
 			hours, minutes, seconds = self._get_elapsed_time()
 			elapsed_time = "{0}h:{1}m:{2}s".format(hours, minutes, seconds)
 			self.log_critical("Failed", elapsed_time=elapsed_time)
-			traceback.print_exc(file=sys.stdout)
+			traceback.print_exc(file=sys.stderr)
 			return -1
 		return 0
 

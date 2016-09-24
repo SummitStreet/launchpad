@@ -135,8 +135,8 @@ class CommandLineApp(object):
 		Initializes the ArgumentParser and injects command-line arguments as
 		static variables into the types defined in the module.
 		"""
-		writer = codecs.getwriter("utf8")
-		sys.stdout = writer(sys.stdout)
+		sys.stdin = codecs.getreader("utf-8")(sys.stdin)
+		sys.stdout = codecs.getwriter("utf-8")(sys.stdout)
 
 		# Create and initialize an ArgumentParser.
 		parser = argparse.ArgumentParser(description=description)
@@ -146,6 +146,10 @@ class CommandLineApp(object):
 			# Positional arguments do not use required.
 			if i[0][:2] != "--":
 				del params["required"]
+			# Boolean arguments do not use type or nargs.
+			if i[2] == bool:
+				params.pop("type", None)
+				params.pop("nargs", None)
 			parser.add_argument(i[0], **params)
 
 		# Inject argument values into all types within the module with matching

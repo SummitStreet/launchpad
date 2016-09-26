@@ -46,10 +46,10 @@ init :
 -include $(MAKESTUFF)/python_vars.mak
 
 BUILD_TARGETS=\
-	app.py \
+	service.py \
 	module.js
 
-app.py : $(SOURCE_DIR)/main/python/app.py
+service.py : $(SOURCE_DIR)/main/python/service.py
 
 module.js : $(SOURCE_DIR)/main/javascript/module.js
 

@@ -4,7 +4,7 @@
 	"description" : "A collection of components that may be used as the starting point for Python and JavaScript apps.",
 	"url" : "https://github.com/SummitStreet/launchpad",
 	"components" : [
-		"dist/app.py",
+		"dist/service.py",
 		"dist/module.js"
 	],
 	"dependencies" : [

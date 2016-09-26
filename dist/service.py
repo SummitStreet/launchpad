@@ -38,7 +38,7 @@ import logging
 import sys
 import traceback
 
-class CommandLineApp(object):
+class Service(object):
 	"""
 	This abstract class implements the shell of an command-line app.
 	"""
@@ -75,7 +75,7 @@ class CommandLineApp(object):
 		"""
 		TODO
 		"""
-		elapsed_date_time = datetime.datetime.now() - CommandLineApp.start_date_time
+		elapsed_date_time = datetime.datetime.now() - Service.start_date_time
 		hours, minutes = divmod(elapsed_date_time.seconds, 3600)
 		minutes, seconds = divmod(minutes, 60)
 		return (elapsed_date_time.days * 24 + hours, minutes, seconds)
@@ -183,7 +183,7 @@ class CommandLineApp(object):
 		Runs the app.
 		"""
 		try:
-			CommandLineApp.start_date_time = datetime.datetime.now()
+			Service.start_date_time = datetime.datetime.now()
 			self.log_system("Running {0}".format(type(self).__name__))
 			self.initialize()
 			self.start()

@@ -1,0 +1,28 @@
+{
+	"name" : "launchpad-express-file-server",
+	"version" : "1.0.0",
+	"description" : "A template for serving static content with Node & Express.",
+	"main" : "app.js",
+	"scripts" : {
+		"start" : "node app.js",
+		"test" : ""
+	},
+	"repository" : {
+		"type" : "git",
+		"url" : "git://github.com/SummitStreet/launchpad.git"
+	},
+	"dependencies" : {
+		"express" : ">=4.*"
+	},
+	"keywords" : [
+	],
+	"author" : {
+		"name" : "David Padgett",
+		"email" : "david@summitstreet.biz",
+		"url" : "http://summitstreet.biz/"
+	},
+	"license" : "MIT",
+	"bugs" : {
+		"url": "https://github.com/SummitStreet/launchpad/issues"
+	}
+}

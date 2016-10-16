@@ -26,6 +26,7 @@
 
 //** launchpad/src/main/javascript/module.js
 
+/* global */
 /* eslint-disable no-unused-vars */
 
 /**

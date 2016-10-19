@@ -7,8 +7,8 @@
 	"url" : "https://github.com/SummitStreet/launchpad",
 	"components" : [
 		"dist/java",
-		"dist/javascript/expess-file-server/app.js",
-		"dist/javascript/expess-file-server/package.json",
+		"dist/javascript/express-file-server/app.js",
+		"dist/javascript/express-file-server/package.json",
 		"dist/javascript/service.js",
 		"dist/python/service.py"
 	],

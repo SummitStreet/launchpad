@@ -6,7 +6,11 @@
 	"description" : "A collection of components that may be used as the starting point for Python, JavaScript, and Java apps.",
 	"url" : "https://github.com/SummitStreet/launchpad",
 	"components" : [
-		"dist/java",
+		"dist/java/Class.java",
+		"dist/java/Interface.java",
+		"dist/java/jetty-jersey-rest/pom.xml",
+		"dist/java/jetty-jersey-rest/src/main/java/rest_api/ResourceService.java",
+		"dist/java/jetty-jersey-rest/src/main/webapp/WEB-INF/web.xml",
 		"dist/javascript/express-file-server/app.js",
 		"dist/javascript/express-file-server/package.json",
 		"dist/javascript/service.js",

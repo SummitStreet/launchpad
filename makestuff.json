@@ -6,10 +6,9 @@
 	"description" : "A collection of components that may be used as the starting point for Python, JavaScript, and Java apps.",
 	"url" : "https://github.com/SummitStreet/launchpad",
 	"components" : [
-		"dist/python",
-		"dist/java",
-		"dist/javascript",
-		"dist/javascript"
+		"dist/python/",
+		"dist/java/",
+		"dist/javascript/"
 	],
 	"dependencies" : [
 	]

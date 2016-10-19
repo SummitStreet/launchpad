@@ -3,12 +3,13 @@
 	"group" : "SummitStreet",
 	"name" : "launchpad",
 	"version" : 1.0,
-	"description" : "A collection of components that may be used as the starting point for Python and JavaScript apps.",
+	"description" : "A collection of components that may be used as the starting point for Python, JavaScript, and Java apps.",
 	"url" : "https://github.com/SummitStreet/launchpad",
 	"components" : [
-		"dist/python/service.py",
-		"dist/javascript/service.js",
-		"dist/javascript/service-node.js"
+		"dist/python",
+		"dist/java"
+		"dist/javascript",
+		"dist/javascript"
 	],
 	"dependencies" : [
 	]

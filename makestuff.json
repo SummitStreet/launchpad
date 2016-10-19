@@ -7,7 +7,8 @@
 	"url" : "https://github.com/SummitStreet/launchpad",
 	"components" : [
 		"dist/python/service.py",
-		"dist/javascript/module.js"
+		"dist/javascript/service.js",
+		"dist/javascript/service-node.js"
 	],
 	"dependencies" : [
 	]

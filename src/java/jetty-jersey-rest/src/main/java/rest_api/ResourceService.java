@@ -26,15 +26,15 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Path("/resource")
 public class ResourceService {
 
-	// Static variables.
+	//** Static variables.
 
-	// Static initializer.
+	//** Static initializer.
 
-	// Instance variables.
+	//** Instance variables.
 
-	// Instance initializer.
+	//** Instance initializer.
 
-	// Inner classes.
+	//** Inner classes.
 
 	/**
 	 * Resource implements a simple model object that is exposed via a RESTful
@@ -44,11 +44,11 @@ public class ResourceService {
 
 	public static class Resource {
 
-		// Static variables.
+		//** Static variables.
 
 		protected final static List<Resource> CACHE = new ArrayList<Resource>();
 
-		// Static initializer.
+		//** Static initializer.
 
 		static {
 			CACHE.add(new Resource("123", "abc"));
@@ -56,17 +56,17 @@ public class ResourceService {
 			CACHE.add(new Resource("789", "ghi"));
 		}
 
-		// Instance variables.
+		//** Instance variables.
 
 		protected String id;
 		protected String value;
 		protected String internalValue;
 
-		// Instance initializer.
+		//** Instance initializer.
 
-		// Inner classes.
+		//** Inner classes.
 
-		// Constructors.
+		//** Constructors.
 
 		protected Resource() {
 			super();
@@ -79,7 +79,7 @@ public class ResourceService {
 			this.value = value;
 		}
 
-		// Static methods.
+		//** Static methods.
 
 		/**
 		 * Retrieves the Resource whose id matches the specified id.
@@ -111,7 +111,7 @@ public class ResourceService {
 			return (CACHE);
 		}
 
-		// Instance methods.
+		//** Instance methods.
 
 		public String getId() {
 			return (id);
@@ -151,20 +151,20 @@ public class ResourceService {
 	@XmlRootElement
 	public static class ResourceProxy {
 
-		// Static variables.
+		//** Static variables.
 
-		// Static initializer.
+		//** Static initializer.
 
-		// Instance variables.
+		//** Instance variables.
 
 		public String id;
 		public String value;
 
-		// Instance initializer.
+		//** Instance initializer.
 
-		// Inner classes.
+		//** Inner classes.
 
-		// Constructors.
+		//** Constructors.
 
 		/**
 		 * The default constructor.
@@ -177,7 +177,7 @@ public class ResourceService {
 			super();
 		}
 
-		// Static methods.
+		//** Static methods.
 
 		/**
 		 * Creates a new ResourceProxy based on the specified Resource.
@@ -193,11 +193,11 @@ public class ResourceService {
 			return (resourceProxy);
 		}
 
-		// Instance methods.
+		//** Instance methods.
 
 	}
 
-	// Constructors.
+	//** Constructors.
 
 	/**
 	 * The default constructor.
@@ -210,9 +210,9 @@ public class ResourceService {
 		super();
 	}
 
-	// Static methods.
+	//** Static methods.
 
-	// Instance methods.
+	//** Instance methods.
 
 	/**
 	 * Adds a new Resource to the cache.

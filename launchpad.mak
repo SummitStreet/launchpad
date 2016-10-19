@@ -35,23 +35,28 @@ all :
 ### usage: make [-f <makefile>] init [REPO_DIR=<external_repo_base_directory>]
 
 makestuff_init :
+	@rm -fr $(MAKESTUFF)
 	@python -c 'import os, re, sys ; C = "git clone --branch {1} https://{0}.git {2}" ; R, V = re.match(r"(.+?)(@.*)?.git", sys.argv[2]).groups() ; D = os.sep.join([sys.argv[1], R, V[1:]]) ; None if os.path.isdir(D) else os.system(C.format(R, V[1:], D))' $(REPO_DIR) $(MAKESTUFF_REPO) >/dev/null 2>/dev/null
 	@rm -fr $(REPO_DIR)/.tmp ; mv $(MAKESTUFF)/dist $(REPO_DIR)/.tmp ; rm -fr $(MAKESTUFF) ; mv $(REPO_DIR)/.tmp $(MAKESTUFF)
 
 .PHONY : all makestuff_init
 
-#** makestuff/src/javascript/javascript.mak
+#** launchpad/launchpad.mak
 
 -include $(MAKESTUFF)/java_vars.mak
 -include $(MAKESTUFF)/javascript_vars.mak
 -include $(MAKESTUFF)/python_vars.mak
 -include $(MAKESTUFF)/xml_vars.mak
 
+BUILD_DEPENDENCIES=\
+	github.com/david-padgett/fn-test.js.git.npm
+
 JAVA_CLASSPATH=~/.m2/repository/javax/ws/rs/javax.ws.rs-api/2.0/javax.ws.rs-api-2.0.jar
 
 BUILD_TARGETS=\
 	$(DIST)/python/service.py \
-	$(DIST)/javascript/module.js \
+	$(DIST)/javascript/service.js \
+	$(DIST_DIR)/service-node.js \
 	$(DIST)/javascript/express-file-server/app.js \
 	$(DIST)/javascript/express-file-server/package.json \
 	$(DIST)/java/Class.java \
@@ -60,8 +65,20 @@ BUILD_TARGETS=\
 	$(DIST)/java/jetty-jersey-rest/src/main/java/rest_api/ResourceService.java \
 	$(DIST)/java/jetty-jersey-rest/src/main/webapp/WEB-INF/web.xml
 
+JAVASCRIPT_TEST_COMPONENTS=\
+	$(DIST_DIR)/service-test.js
+
 $(DIST)/python/service.py : $(SRC_DIR)/python/service.py
-$(DIST)/javascript/module.js : $(SRC_DIR)/javascript/module.js
+
+$(DIST)/javascript/service.js : $(SRC_DIR)/javascript/service.js
+
+$(DIST_DIR)/service-node.js : \
+	$(SRC_DIR)/javascript/service-node-prefix.js \
+	$(SRC_DIR)/javascript/service.js \
+	$(SRC_DIR)/javascript/service-node-suffix.js
+
+$(DIST_DIR)/service-test.js : $(SRC_DIR)/test/javascript/service-test.js
+
 $(DIST)/javascript/express-file-server/app.js : $(SRC_DIR)/javascript/express-file-server/app.js
 $(DIST)/javascript/express-file-server/package.json : $(SRC_DIR)/javascript/express-file-server/package.json
 $(DIST)/java/Class.java : $(SRC_DIR)/java/Class.java

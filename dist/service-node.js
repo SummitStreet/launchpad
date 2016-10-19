@@ -24,6 +24,7 @@
  * SOFTWARE.
  */
 
+/* global */
 /* eslint-disable no-unused-vars */
 
 /**
@@ -32,13 +33,12 @@
  * collisions with other functions.
  */
 
-function __MODULE_NAME__(rootNamespace, namespacePrefix) {
+function __Service(rootNamespace, namespacePrefix, serviceDelegate) {
 
 	var __THIS = this;
 	var __ROOT_NAMESPACE = rootNamespace;
 	var __NAMESPACE_PREFIX = namespacePrefix == null ? "$" : namespacePrefix;
-	var __MODULE_PREFIX = __NAMESPACE_PREFIX + this.constructor.name;
-	var __MODULE = new __Module(__THIS);
+	var __MODULE = new __Module(serviceDelegate != null ? serviceDelegate : __THIS);
 
 	function __Module(delegate) {
 
@@ -47,7 +47,7 @@ function __MODULE_NAME__(rootNamespace, namespacePrefix) {
 
 		this.addToNamespace = function addToNamespace(name, value) {
 			__ROOT_NAMESPACE[name] = value;
-			this.invokeDelegate(arguments.callee.name);
+			this.invokeDelegate("addToNamespace");
 		};
 
 		this.invokeDelegate = function(operation) {
@@ -67,7 +67,7 @@ function __MODULE_NAME__(rootNamespace, namespacePrefix) {
 		this.install = function install(containers) {
 			this.__containers = containers;
 			this.manageAliases(this.__containers, true);
-			this.invokeDelegate(arguments.callee.name);
+			this.invokeDelegate("install");
 		};
 
 		this.manageAliases = function(containers, addFunctions) {
@@ -102,14 +102,14 @@ function __MODULE_NAME__(rootNamespace, namespacePrefix) {
 		};
 
 		this.removeFromNamespace = function removeFromNamespace(name) {
-			this.invokeDelegate(arguments.callee.name);
+			this.invokeDelegate("removeFromNamespace");
 			if (!(delete __ROOT_NAMESPACE[name])) {
 				__ROOT_NAMESPACE[name] = null;
 			}
 		};
 
 		this.uninstall = function uninstall() {
-			this.invokeDelegate(arguments.callee.name);
+			this.invokeDelegate("uninstall");
 			this.manageAliases(this.__containers, false);
 		};
 
@@ -120,5 +120,8 @@ function __MODULE_NAME__(rootNamespace, namespacePrefix) {
 	}
 
 	__MODULE.install([__THIS]);
+	return (__THIS);
 }
+
+module.exports = __Service;
 

@@ -2,20 +2,20 @@ package Package;
 
 public class Class {
 
-	// Static variables.
+	//** Static variables.
 
-	// Static initializer.
+	//** Static initializer.
 
-	// Instance variables.
+	//** Instance variables.
 
-	// Instance initializer.
+	//** Instance initializer.
 
-	// Inner classes.
+	//** Inner classes.
 
-	// Constructors.
+	//** Constructors.
 
-	// Static methods.
+	//** Static methods.
 
-	// Instance methods.
+	//** Instance methods.
 
 }

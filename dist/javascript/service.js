@@ -24,8 +24,6 @@
  * SOFTWARE.
  */
 
-//** launchpad/src/main/javascript/module.js
-
 /* global */
 /* eslint-disable no-unused-vars */
 
@@ -35,54 +33,28 @@
  * collisions with other functions.
  */
 
-function __MODULE_NAME__(rootNamespace, namespacePrefix) {
-
-	//** Constants
+function __Service(rootNamespace, namespacePrefix, serviceDelegate) {
 
 	var __THIS = this;
 	var __ROOT_NAMESPACE = rootNamespace;
 	var __NAMESPACE_PREFIX = namespacePrefix == null ? "$" : namespacePrefix;
-	var __MODULE_PREFIX = __NAMESPACE_PREFIX + this.constructor.name;
-	var __MODULE = new __Module(__THIS);
-
-	//** Functions
-
-	//** Inner Classes
+	var __MODULE = new __Module(serviceDelegate != null ? serviceDelegate : __THIS);
 
 	function __Module(delegate) {
-
-		//** Constants
-
-		//** Functions
-
-		//** Inner Classes
-
-		//** Instance Variables
 
 		this.__delegate = delegate;
 		this.__containers = [];
 
-		//** Instance Initializer
-
-		//** Instance Operations
-
-		// Adds the specified name/value pair to the provided namespace.
-
 		this.addToNamespace = function addToNamespace(name, value) {
 			__ROOT_NAMESPACE[name] = value;
-			this.invokeDelegate(arguments.callee.name);
+			this.invokeDelegate("addToNamespace");
 		};
-
-		// Invokes an operation implemented by the delegate.
 
 		this.invokeDelegate = function(operation) {
 			if (this.__delegate != null && this.__delegate[operation] != null && this.__delegate[operation].constructor === Function) {
 				delegate[operation].apply(delegate, Array.prototype.slice.call(arguments, 1));
 			}
 		};
-
-		// Create the API dispatcher function that will be invoked when the API
-		// is invoked within the namespace provided via the main constructor.
 
 		this.initializeDispatcher = function(container, api) {
 			var dispatcher = function __ModuleApiDispatcher() {
@@ -92,17 +64,11 @@ function __MODULE_NAME__(rootNamespace, namespacePrefix) {
 			return (dispatcher);
 		};
 
-		// Add all named functions within the specified containers to the
-		// provided namespace.
-
 		this.install = function install(containers) {
 			this.__containers = containers;
 			this.manageAliases(this.__containers, true);
-			this.invokeDelegate(arguments.callee.name);
+			this.invokeDelegate("install");
 		};
-
-		// Add or remove named functions and values within the specified
-		// containers to the namespace provided via the main constructor.
 
 		this.manageAliases = function(containers, addFunctions) {
 			for (var i = 0; i < containers.length; ++i) {
@@ -135,23 +101,17 @@ function __MODULE_NAME__(rootNamespace, namespacePrefix) {
 			}
 		};
 
-		// Remove the specified property from the provided namespace.
-
 		this.removeFromNamespace = function removeFromNamespace(name) {
-			this.invokeDelegate(arguments.callee.name);
+			this.invokeDelegate("removeFromNamespace");
 			if (!(delete __ROOT_NAMESPACE[name])) {
 				__ROOT_NAMESPACE[name] = null;
 			}
 		};
 
-		// Remove from the provided namespace all functions added by install.
-
 		this.uninstall = function uninstall() {
-			this.invokeDelegate(arguments.callee.name);
+			this.invokeDelegate("uninstall");
 			this.manageAliases(this.__containers, false);
 		};
-
-		//** Constructor
 
 		if (__ROOT_NAMESPACE == null) {
 			throw new Error("Unable to initialize " + __THIS.constructor.name + ": No root namespace provided when instantiated.");
@@ -159,13 +119,7 @@ function __MODULE_NAME__(rootNamespace, namespacePrefix) {
 
 	}
 
-	//** Instance Variables
-
-	//** Instance Initializer
-
-	//** Instance Operations
-
-	//** Constructor
-
 	__MODULE.install([__THIS]);
+	return (__THIS);
 }
+

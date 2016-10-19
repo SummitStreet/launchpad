@@ -6,8 +6,11 @@
 	"description" : "A collection of components that may be used as the starting point for Python, JavaScript, and Java apps.",
 	"url" : "https://github.com/SummitStreet/launchpad",
 	"components" : [
-		"dist/python/service.py",
-		"dist/javascript/service.js"
+		"dist/java",
+		"dist/javascript/expess-file-server/app.js",
+		"dist/javascript/expess-file-server/package.json",
+		"dist/javascript/service.js",
+		"dist/python/service.py"
 	],
 	"dependencies" : [
 	]

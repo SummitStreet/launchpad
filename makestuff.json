@@ -7,7 +7,7 @@
 	"url" : "https://github.com/SummitStreet/launchpad",
 	"components" : [
 		"dist/python",
-		"dist/java"
+		"dist/java",
 		"dist/javascript",
 		"dist/javascript"
 	],

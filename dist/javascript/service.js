@@ -28,9 +28,9 @@
 /* eslint-disable no-unused-vars */
 
 /**
- * This template implements a singleton type that can install named operations
- * into a namespace.  The operation names are optionally prefixed to prevent
- * collisions with other functions.
+ * This function implements a singleton type (e.g: a service) that can install
+ * named operations into a namespace.  The operation names are optionally
+ * prefixed to prevent collisions with other functions.
  */
 
 function __Service(rootNamespace, namespacePrefix, serviceDelegate) {
@@ -38,9 +38,9 @@ function __Service(rootNamespace, namespacePrefix, serviceDelegate) {
 	var __THIS = this;
 	var __ROOT_NAMESPACE = rootNamespace;
 	var __NAMESPACE_PREFIX = namespacePrefix == null ? "$" : namespacePrefix;
-	var __MODULE = new __Module(serviceDelegate != null ? serviceDelegate : __THIS);
+	var __SERVICE_MANAGER = new __ServiceManager(serviceDelegate == null ? __THIS : serviceDelegate);
 
-	function __Module(delegate) {
+	function __ServiceManager(delegate) {
 
 		this.__delegate = delegate;
 		this.__containers = [];
@@ -57,7 +57,7 @@ function __Service(rootNamespace, namespacePrefix, serviceDelegate) {
 		};
 
 		this.initializeDispatcher = function(container, api) {
-			var dispatcher = function __ModuleApiDispatcher() {
+			var dispatcher = function __ServiceManagerApiDispatcher() {
 				var args = Array.prototype.slice.call(arguments, 0);
 				return (api.apply(container, args));
 			};
@@ -119,7 +119,11 @@ function __Service(rootNamespace, namespacePrefix, serviceDelegate) {
 
 	}
 
-	__MODULE.install([__THIS]);
+	this._getServiceManager = function() {
+		return (__SERVICE_MANAGER);
+	};
+
+	__SERVICE_MANAGER.install([__THIS]);
 	return (__THIS);
 }
 

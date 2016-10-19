@@ -30,9 +30,9 @@
 /* eslint-disable no-unused-vars */
 
 /**
- * This template implements a singleton type that can install named operations
- * into a namespace.  The operation names are optionally prefixed to prevent
- * collisions with other functions.
+ * This function implements a singleton type (e.g: a service) that can install
+ * named operations into a namespace.  The operation names are optionally
+ * prefixed to prevent collisions with other functions.
  */
 
 function __Service(rootNamespace, namespacePrefix, serviceDelegate) {
@@ -42,14 +42,13 @@ function __Service(rootNamespace, namespacePrefix, serviceDelegate) {
 	var __THIS = this;
 	var __ROOT_NAMESPACE = rootNamespace;
 	var __NAMESPACE_PREFIX = namespacePrefix == null ? "$" : namespacePrefix;
-//	var __SERVICE_PREFIX = __NAMESPACE_PREFIX + this.constructor.name;
-	var __MODULE = new __Module(serviceDelegate != null ? serviceDelegate : __THIS);
+	var __SERVICE_MANAGER = new __ServiceManager(serviceDelegate == null ? __THIS : serviceDelegate);
 
 	//** Functions
 
 	//** Inner Classes
 
-	function __Module(delegate) {
+	function __ServiceManager(delegate) {
 
 		//** Constants
 
@@ -76,7 +75,6 @@ function __Service(rootNamespace, namespacePrefix, serviceDelegate) {
 		// Invokes an operation implemented by the delegate.
 
 		this.invokeDelegate = function(operation) {
-//			console.log("INVOKE DELEGATE", operation, this.__delegate, this.__delegate[operation] != null);
 			if (this.__delegate != null && this.__delegate[operation] != null && this.__delegate[operation].constructor === Function) {
 				delegate[operation].apply(delegate, Array.prototype.slice.call(arguments, 1));
 			}
@@ -86,7 +84,7 @@ function __Service(rootNamespace, namespacePrefix, serviceDelegate) {
 		// is invoked within the namespace provided via the main constructor.
 
 		this.initializeDispatcher = function(container, api) {
-			var dispatcher = function __ModuleApiDispatcher() {
+			var dispatcher = function __ServiceManagerApiDispatcher() {
 				var args = Array.prototype.slice.call(arguments, 0);
 				return (api.apply(container, args));
 			};
@@ -166,8 +164,12 @@ function __Service(rootNamespace, namespacePrefix, serviceDelegate) {
 
 	//** Instance Operations
 
+	this._getServiceManager = function() {
+		return (__SERVICE_MANAGER);
+	};
+
 	//** Constructor
 
-	__MODULE.install([__THIS]);
+	__SERVICE_MANAGER.install([__THIS]);
 	return (__THIS);
 }

@@ -65,8 +65,8 @@ function __Service(rootNamespace, namespacePrefix, serviceDelegate) {
 		};
 
 		this.install = function install(containers) {
-			this.__containers = containers;
-			this.manageAliases(this.__containers, true);
+			this.__containers = this.__containers.concat(containers);
+			this.manageAliases(containers, true);
 			this.invokeDelegate("install");
 		};
 

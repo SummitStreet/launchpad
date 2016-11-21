@@ -45,7 +45,7 @@ class Service(object):
 	__metaclass__ = ABCMeta
 	_version = 0.1
 	start_date_time = None
-	log_level = "WARNING"
+	log_level = "INFO"
 	log_date_format = "%Y-%m-%d %H:%M:%S"
 	log_kv_format = "{0}={1}"
 	log_format = "{date} [{level}] [{app}] [{api}] [{message}] {values}"
